@@ -7,10 +7,13 @@ const app = express();
 app.use(express.json());
 
 bot.start((ctx) => {
+    const userId = ctx.from.id;
+    const webAppUrl = `https://anonvibes-web-app.vercel.app?startapp=${userId}`;
+
     ctx.reply('👋 Добро пожаловать в Anon Vibes!\n\nНажмите кнопку ниже, чтобы открыть анонимный чат и отправить сообщение:', {
         reply_markup: {
             inline_keyboard: [
-                [{ text: '🚀 Открыть Anon Vibes', web_app: { url: 'https://anonvibes-web-app.vercel.app' } }]
+                [{ text: '🚀 Открыть Anon Vibes', web_app: { url: webAppUrl } }]
             ]
         }
     });
